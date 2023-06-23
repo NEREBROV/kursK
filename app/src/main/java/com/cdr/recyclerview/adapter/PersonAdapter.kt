@@ -78,7 +78,7 @@ class PersonAdapter(private val personActionListener: PersonActionListener) :
 
             nameTextView.text = person.name // Отрисовка имени пользователя
             companyTextView.text = person.companyName // Отрисовка компании пользователя
-
+            birthdayTextView.text = person.birthday
             likedImageView.setColorFilter( // Отрисовка цвета "сердца"
                 ContextCompat.getColor(context, color),
                 android.graphics.PorterDuff.Mode.SRC_IN
