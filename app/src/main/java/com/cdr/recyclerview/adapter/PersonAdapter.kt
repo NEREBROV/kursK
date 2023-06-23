@@ -100,7 +100,7 @@ class PersonAdapter(private val personActionListener: PersonActionListener) :
         }
     }
 
-    private fun showPopupMenu(view: View) {
+    private fun showPopupMenu(view: View) { // три точки
         val popupMenu = PopupMenu(view.context, view)
         val person = view.tag as Person
         val position = data.indexOfFirst { it.id == person.id }
@@ -113,11 +113,14 @@ class PersonAdapter(private val personActionListener: PersonActionListener) :
         }
         popupMenu.menu.add(0, ID_REMOVE, Menu.NONE, "Remove")
 
+        popupMenu.menu.add(0, ID_BELIKE, Menu.NONE, "Be like")
+
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
                 ID_MOVE_UP -> personActionListener.onPersonMove(person, -1)
                 ID_MOVE_DOWN -> personActionListener.onPersonMove(person, 1)
                 ID_REMOVE -> personActionListener.onPersonRemove(person)
+                ID_BELIKE -> personActionListener.onPersonLike(person)
             }
             return@setOnMenuItemClickListener true
         }
@@ -129,6 +132,7 @@ class PersonAdapter(private val personActionListener: PersonActionListener) :
         private const val ID_MOVE_UP = 1
         private const val ID_MOVE_DOWN = 2
         private const val ID_REMOVE = 3
+        private const val ID_BELIKE = 4
     }
 
     class PersonViewHolder(val binding: ItemPersonBinding) : RecyclerView.ViewHolder(binding.root)
