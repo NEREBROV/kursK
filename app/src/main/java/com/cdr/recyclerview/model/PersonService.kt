@@ -20,7 +20,6 @@ class PersonService {
                 id = it.toLong(),
                 name = faker.name().fullName(),
                 companyName = faker.company().name(),
-                birthday = faker.date().birthday().toString(),
                 photo = IMAGES[it % IMAGES.size],
                 isLiked = false
             )
@@ -92,7 +91,6 @@ data class Person(
     val id: Long, // Уникальный номер пользователя
     val name: String, // Имя человека
     val companyName: String, // Название комании
-    val birthday: String,
     val photo: String, // Ссылка на фото человека
     val isLiked: Boolean // Был ли лайкнут пользователь
 )
